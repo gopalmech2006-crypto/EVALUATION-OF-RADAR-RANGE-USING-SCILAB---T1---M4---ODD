@@ -34,11 +34,52 @@ Where:
 4. **Define Radar Range Equation:** Compute the numerator and denominator using Scilab's built-in math functions and `%pi`.
 5. **Calculate Maximum Range:** Evaluate $R_{\max}$ by raising the ratio to the power of $0.25$ (1/4th power).
 6. **Execute and Display Results:** Run the Scilab script (`.sce`) to display the maximum radar range in meters and kilometers.
+## PROGRAM
+Gr = 1200;
 
+lambda = 0.04;
+
+sigma = 1.5;
+
+Pmin = 2e-10;
+
+Pt = 1:100:100000;
+
+Rmax1 = ((Pt .* Gt .* Gr .* lambda^2 .* sigma) ./ ((4*%pi)^3 .* Pmin)).^(1/4);
+
+subplot(2,1,1);
+
+plot(Pt, Rmax1);
+
+xlabel("Pt (W)");
+
+ylabel("Rmax (m)");
+
+title("Rmax vs Pt");
+
+xgrid();
+
+Pmin2 = 1e-15:1e-15:1e-12;
+
+Pt2 = 6000;
+
+Rmax2 = ((Pt2 .* Gt .* Gr .* lambda^2 .* sigma) ./ ((4*%pi)^3 .* Pmin2)).^(1/4);
+
+subplot(2,1,2);
+
+plot(Pmin2, Rmax2);
+
+xlabel("Pmin (W)");
+
+ylabel("Rmax (m)");
+
+title("Rmax vs Pmin");
+
+xgrid();
 ---
 
 ## OUTPUT
 <img width="1600" height="925" alt="WhatsApp Image 2026-09-08 at 1 38 30 PM" src="https://github.com/user-attachments/assets/cd7068e1-83ea-4946-b208-cd8d39f98252" />
- CALCULATION
+## TABULATION
 <img width="1600" height="1047" alt="WhatsApp Image 2026-09-09 at 6 48 46 PM" src="https://github.com/user-attachments/assets/ee3c8c2c-4340-4949-aea2-e3bc8ceb50f1" />
 RESULT: Thus the Autocorrelation and PSD are executed in Scilab and output is verified.
